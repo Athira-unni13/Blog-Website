@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Read and Write Blogs</title>
+ <style>
+  body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  background-color: #4CAF50;
+  color: white;
+  padding-bottom: 0px;
+  text-align: center;
+}
+
+nav {
+  background-color: #333;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  padding: 10px 15px;
+  transition: background-color 0.3s;
+}
+
+nav a:hover {
+  background-color: #575757;
+}
+
+.container {
+  display: flex;
+  flex: 1;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #f4f4f4;
+  padding: 15px;
+  border-right: 1px solid #ddd;
+}
+
+main {
+  flex: 1;
+  padding: 20px;
+}
+
+.blog-post {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 20px;
+  transition: box-shadow 0.3s;
+}
+
+.blog-post:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+.search-bar {
+  margin-bottom: 20px;
+}
+
+.search-bar input {
+  width: calc(100% - 100px);
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.search-bar button {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.search-bar button:hover {
+  background-color: #45a049;
+}
+.buttonsubmit{
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;}
+
+.buttonsubmit:hover {
+  background-color: #45a049;
+}
+
+h1{
+  text-align: center;
+}
+.create{
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+.create:hover{
+  background-color: #45a049;
+}
+.edit-delete{
+  display: flex;
+  flex-direction: row; 
+  align-items: center; 
+  justify-content: left;
+  margin-top: 10px;
+}
+.blog-post a{
+  color: #000;
+}
+.blog-post a:hover{
+  color: #45a049;
+}
+
+ </style>
+ <header>
+  
+  <nav>
+    <a href="/home">Home</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+    <a href="/create" >Create</a>
+  </nav>
+</header>
+</head>
+<body>
+
+  <h1>Read and Write Blogs</h1>
+
+ 
+
+ <div class="container">
+   <div class="sidebar">
+     <h3>Search</h3>
+     <div class="search-bar">
+       <input type="text" placeholder="Search...">
+       <button>Search</button>
+     </div>
+     <h3>Categories</h3>
+     <ul>
+       <li>Technology</li>
+       <li>Lifestyle</li>
+       <li>Travel</li>
+     </ul>
+   </div>
+
+   <main>
+     
+     <% blogPost.forEach(post => {%>
+      <div class="blog-post">
+        <h2 name="postTitle"><%= post.title %></h2>
+        <p name="postContent"><%= post.content.replace(/\n/g, "<br>").substring(0,100) %>...</p>
+        
+        <div class="edit-delete">
+        <form action="/delete<%= post.id %>" method="post">
+          <input type="submit" value="Delete" class="buttonsubmit">
+        </form>
+        <form action="/edit<%= post.id %>" method="post">
+         <input type="submit" value="Edit Blog" class="create">
+        </form>
+        <form action="/blog<%= post.id %>" method="post">
+          <input type="submit" value="View Blog" class="create">
+        </form>
+      </div>
+      </div>
+     <%}); %>
+     
+     <div class="blog-post">
+       <h2>Blog Post Title 1</h2>
+       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin euismod, quam eu dignissim fringilla, enim dolor semper leo, ac aliquam sapien elit a ante.</p>
+     </div>
+
+     <div class="blog-post">
+       <h2>Blog Post Title 4</h2>
+       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin euismod, quam eu dignissim fringilla, enim dolor semper leo, ac aliquam sapien elit a ante.</p>
+     </div>
+   </main>
+ </div>
+
+ <footer>
+   <p>&copy; 2023 Read and Write Blogs. All rights reserved.</p>
+ </footer>
+
+</body>
+</html>

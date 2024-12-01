@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create</title>
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+header {
+  background-color: #4CAF50;
+  color: white;
+  padding-bottom: 0;
+  text-align: center;
+}
+
+nav {
+  background-color: #333;
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  padding: 10px 15px;
+  transition: background-color 0.3s;
+}
+
+nav a:hover {
+  background-color: #575757;
+}
+h1{
+  text-align: center;
+}
+.create-blog {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.create-blog input,.create-blog textarea{
+  width: 100%;
+  padding: 20px;
+  margin-bottom: 10px;
+  margin-right: 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.buttonsubmit{
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;}
+
+.buttonsubmit:hover {
+  background-color: #45a049;
+}
+
+main {
+  flex: 1;
+  padding: 40px;
+}
+
+  </style>
+</head>
+<header>
+  <nav>
+    <a href="/home">Home</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+    <a href="/create">Create</a>
+  </nav>
+ </header>
+<body>
+  <h1>Edit Your Blog</h1>
+  <div class="container">
+  <form action="/update<%= post.id %>" method="post">
+    <main>
+      <div class="create-blog">
+        
+        <input  type="text" placeholder="Blog Title" style="width: 1150px;" name="Title" value="<%= post.title %>">
+        <textarea  rows="5" style="width: 1150px;" placeholder="Write your blog content here..." name="Content" ><%= post.content %></textarea>
+        <input type="submit" value="Submit" style="width: 1100px; margin-left: 50px;" class="buttonsubmit">
+      
+      </div>
+    </main>
+  </div>
+  </form>
+</body>
+</html>
